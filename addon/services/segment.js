@@ -64,9 +64,11 @@ export default Ember.Service.extend({
     }
   },
 
-  loadSegment: function(token) {
+  loadSegment: function(config) {
     if (this.hasAnalytics()) {
-      window.analytics.load(token);
+      window.analytics._writeKey=config.token;
+      window.analytics.load(config);
+      window.analytics.page()
     }
   },
 
